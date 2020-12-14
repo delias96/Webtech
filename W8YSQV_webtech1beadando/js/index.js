@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $(".content").load("fooldal.html");
+    $(".content").load("mainpage.html");
     $.each($(".menuspan"), function (msIndex, msValue) {
         $(msValue).click(function (event) {
             event.preventDefault();

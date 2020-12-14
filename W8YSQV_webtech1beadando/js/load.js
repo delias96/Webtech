@@ -1,35 +1,39 @@
 $(document).ready(function () {
     $.getJSON("https://webtechcars.herokuapp.com/api/cars", function (data) {
-        var cartable = $("#auto");
+        var cartable = $("#car");
         $.each(data, function (key, value) {
             var row = $('<tr></tr>');
-            var nev = $('<td>' + value.name + '</td>');
-            var fogyasztas = $('<td>' + value.consumption + '</td>');
-            var szin = $('<td>' + value.color + '</td>');
-            var gyarto = $('<td>' + value.manufacturer + '</td>');
-            var elerheto = $('<td>' + value.avaiable + '</td>');
-            var ev = $('<td>' + value.year + '</td>');
-            var loero = $('<td>' + value.horsepower + '</td>');
-            $(row).append(nev);
-            $(row).append(fogyasztas);
-            $(row).append(szin);
-            $(row).append(gyarto);
-            $(row).append(elerheto);
-            $(row).append(ev);
-            $(row).append(loero);
+            var name = $('<td>' + value.name + '</td>');
+            var consumption = $('<td>' + value.consumption + '</td>');
+            var color = $('<td>' + value.color + '</td>');
+            var manufacturer = $('<td>' + value.manufacturer + '</td>');
+            var avaiable = $('<td>' + value.avaiable + '</td>');
+            var year = $('<td>' + value.year + '</td>');
+            var horsepower = $('<td>' + value.horsepower + '</td>');
+            var deleteButtonCell = $('<td>').append($('<button>', {text: 'Törlés', id: 'delete-car-' + value._id }));
+            $(row).append(name);
+            $(row).append(consumption);
+            $(row).append(color);
+            $(row).append(manufacturer);
+            $(row).append(avaiable);
+            $(row).append(year);
+            $(row).append(horsepower);
+            $(row).append(deleteButtonCell);
             $(cartable).append(row);
         })
     })
     $.getJSON("https://webtechcars.herokuapp.com/api/manufacturers", function (data) {
-        var manufacttable = $("#gyarto");
+        var manufacttable = $("#manu");
         $.each(data, function (key, value) {
             var row = $('<tr></tr>');
-            var nev = $('<td>' + value.name + '</td>');
-            var orszag = $('<td>' + value.country + '</td>');
-            var alapit = $('<td>' + value.founded + '</td>');
-            $(row).append(nev);
-            $(row).append(orszag);
-            $(row).append(alapit);
+            var name = $('<td>' + value.name + '</td>');
+            var country = $('<td>' + value.country + '</td>');
+            var founded = $('<td>' + value.founded + '</td>');
+            var deleteButtonCell = $('<td>').append($('<button>', {text: 'Törlés', id: 'delete-man-' + value._id }));
+            $(row).append(name);
+            $(row).append(country);
+            $(row).append(founded);
+            $(row).append(deleteButtonCell);
             $(manufacttable).append(row);
         })
     })

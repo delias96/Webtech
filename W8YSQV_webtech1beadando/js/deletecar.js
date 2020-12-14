@@ -1,24 +1,24 @@
-$("#gomb").click(function(e) {
-    e.preventDefault();
-
-    var id = document.getElementById("torolid").value;
-
-    var url = "https://webtechcars.herokuapp.com/api/cars" + "/" + id;
+$(document).on('click','button[id^="delete-car-"]', function (event) {
+    var id = $(this).attr('id').replace('delete-car-', '');
+    $(this).prop('disabled', true);
 
     $.ajax({
         type: 'DELETE',
-        url: url
+        url: 'https://webtechcars.herokuapp.com/api/cars/' + id,
+        success: function() {
+            $(event.target).closest('tr').remove();
+        }
     });
 });
-$("#gomb2").click(function(e) {
-    e.preventDefault();
-
-    var id2 = document.getElementById("torolid2").value;
-
-    var url2 = "https://webtechcars.herokuapp.com/api/manufacturers" + "/" + id2;
+$(document).on('click','button[id^="delete-man-"]', function (event) {
+    var id = $(this).attr('id').replace('delete-man-', '');
+    $(this).prop('disabled', true);
 
     $.ajax({
         type: 'DELETE',
-        url: url2
+        url: 'https://webtechcars.herokuapp.com/api/manufacturers/' + id,
+        success: function() {
+            $(event.target).closest('tr').remove();
+        }
     });
 });

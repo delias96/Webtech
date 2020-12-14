@@ -1,18 +1,18 @@
 $(document).ready(function () {
-    let legor = $('#gysel');
+    let dropdown = $('#manufacturer');
 
-    legor.empty();
+    dropdown.empty();
 
-    legor.append('<option selected="true" disabled>Válasz gyártót</option>');
-    legor.prop('selectedIndex', 0);
+    dropdown.append('<option selected="true" disabled>Válasz gyártót</option>');
+    dropdown.prop('selectedIndex', 0);
 
     $.getJSON('https://webtechcars.herokuapp.com/api/manufacturers', function (data) {
         $.each(data, function (key, entry) {
-            legor.append($('<option></option>').attr('value', entry.name).text(entry.name));
+            dropdown.append($('<option></option>').attr('value', entry.name).text(entry.name));
         })
     });
 
-    $('#formom').submit(function (event) {
+    $('#addcar').submit(function (event) {
         event.preventDefault();
 
         var data = $(this).serializeArray().reduce(function (acc, val) {

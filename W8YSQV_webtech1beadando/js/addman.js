@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#form').submit(function (event) {
+    $('#addman').submit(function (event) {
         event.preventDefault();
 
         var data = $(this).serializeArray().reduce(function (acc, val) {
